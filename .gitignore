@@ -1,0 +1,9 @@
+/target
+**/*.iml
+.idea
+.vscode
+node_modules
+.DS_Store
+
+# Project exclude paths
+/backend/target/

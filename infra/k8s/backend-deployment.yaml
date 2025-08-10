@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: meeting-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: meeting-backend
+  template:
+    metadata:
+      labels:
+        app: meeting-backend
+    spec:
+      containers:
+      - name: backend
+        image: yourrepo/meeting-backend:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: prod
