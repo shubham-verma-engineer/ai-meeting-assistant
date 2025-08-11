@@ -79,5 +79,14 @@ Built using **Java and Spring Boot**, this modular and scalable system seamlessl
 - `report-service`: Generates EOD and on-demand reports
 
 ---
+High-level architecture
+	•	macOS JavaFX client (UI, local notifications, OAuth initiation for calendar) ↔ Spring Boot Backend (REST + WebSocket)
+	•	MySQL (JPA/Hibernate) for persistent data (meetings, tasks, participants, history)
+	•	Whisper microservice (Python) — accepts audio file, returns transcript (REST)
+	•	Meeting Join Bot (external process: Python/Node using headless browser or Zoom SDK) to join calls and record audio; reports audio file URL to backend
+	•	OpenAI (or Gemini) client invoked by backend to summarize/transcribe-clean/produce MoM & tasks
+	•	Email (Spring Mail) / Slack / Teams clients for notifications & interactive commands
+	•	Docker + Kubernetes for deployment (backend, whisper, bot workers)
+	•	Security: OAuth2 for calendar APIs; Spring Security with JWT/OAuth2 for API endpoints
 
 
